@@ -6,6 +6,10 @@
       yum:
          name: python-pip
          state: present
+    - name: Install docker-py python module
+      pip:
+         name : docker-py
+         state: present
     - name: Install docker
       yum:
          name: docker
@@ -13,12 +17,8 @@
     - name: start docker
       service:
          name: docker
-         state: start
+         state: started
          enable: yes
-    - name: Install docker-py python module
-      pip:
-         name : docker-py
-         state: present
     - name: Start the container 
       docker_container:
          name: fasass
